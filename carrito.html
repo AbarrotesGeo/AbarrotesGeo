@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #0407b8;
+        }
+
+        /* Estilos para el recuadro del carrito de compras */
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(40deg, #0407b8, #00fae5);
+            color: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .cart-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .cart-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .cart-item .remove-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cart-item .remove-btn:hover {
+            background-color: darkred;
+        }
+
+        /* Estilos para el botón de compra */
+        #buy-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(40deg, #0407b8, #00fae5);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #buy-btn:hover {
+            background-color: #218838;
+            transform: translateY(-5px);
+        }
+
+        /* Estilos para el total */
+        #total {
+            text-align: right;
+            font-size: 20px;
+            margin-top: 10px;
+            color: #0407b8;
+        }
+
+        /* Estilos para el recuadro externo de información del cliente */
+        #customer-info {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #eee;
+            border-radius: 15px;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 400px;
+        }
+
+        #customer-info.active {
+            display: block;
+        }
+
+        #customer-info h2 {
+            text-align: center;
+            color: #0407b8;
+        }
+
+        #customer-info label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #customer-info input[type="text"], 
+        #customer-info input[type="radio"] {
+            width: calc(100% - 10px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #customer-info input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(40deg, #0407b8, #00fae5);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #customer-info input[type="submit"]:hover {
+            background-color: #218838;
+            transform: translateY(-5px);
+        }
+
+        /* Estilos adicionales para el formulario de pago */
+        #payment-method label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Carrito de Compras</h1>
+    <div id="cart"></div>
+    <div id="total"></div>
+    <button id="buy-btn" onclick="toggleCustomerInfo()">Comprar Ahora</button>
+
+    <div id="customer-info">
+        <h2>Información del Cliente</h2>
+        <form id="customer-form">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" required><br><br>
+            
+            <label for="address">Dirección:</label>
+            <input type="text" id="address" required><br><br>
+            
+            <div id="bank-details-section" style="display: none;">
+                <label for="bank-details">Datos Bancarios:</label>
+                <input type="text" id="bank-details"><br><br>
+            </div>
+            
+            <div id="payment-method">
+                <label for="payment-cash">
+                    <input type="radio" id="payment-cash" name="payment-method" value="cash" required>
+                    Pago en efectivo
+                </label><br>
+                <label for="payment-transfer">
+                    <input type="radio" id="payment-transfer" name="payment-method" value="transfer" required>
+                    Transferencia bancaria
+                </label><br><br>
+            </div>
+            
+            <input type="submit" value="Finalizar Compra">
+        </form>
+    </div>
+
+    <script>
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartElement = document.getElementById('cart');
+            cartElement.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <span>${item.name}</span>
+                    <span>$${item.price.toFixed(2)}</span>
+                    <button class="remove-btn" onclick="removeFromCart(${index})">X</button>
+                `;
+                cartElement.appendChild(cartItem);
+                total += item.price;
+            });
+            document.getElementById('total').innerText = `Total: $${total.toFixed(2)}`;
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function toggleCustomerInfo() {
+            const customerInfo = document.getElementById('customer-info');
+            customerInfo.classList.toggle('active');
+        }
+
+        document.getElementById('customer-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const bankDetails = document.getElementById('bank-details').value;
+            const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+
+            // Validar que todos los campos obligatorios estén llenos
+            if (!name || !address || (paymentMethod === 'transfer' && !bankDetails)) {
+                alert('Por favor completa todos los campos obligatorios.');
+                return;
+            }
+
+            // Manejar la información del cliente y el método de pago según sea necesario
+            alert(`¡Compra realizada!\nCliente: ${name}\nDirección: ${address}\nMétodo de pago: ${paymentMethod}\nDatos Bancarios: ${bankDetails}`);
+
+            // Limpiar el carrito y actualizar la pantalla
+            cart.length = 0;
+            updateCart();
+            localStorage.removeItem('cart');
+
+            // Opcionalmente, resetear el formulario o esconder la sección de información del cliente
+            document.getElementById('customer-form').reset();
+            document.getElementById('customer-info').classList.remove('active');
+        });
+
+        // Mostrar el campo de datos bancarios solo cuando se selecciona transferencia bancaria
+        document.getElementById('payment-transfer').addEventListener('change', function() {
+            const bankDetailsSection = document.getElementById('bank-details-section');
+            bankDetailsSection.style.display = this.checked ? 'block' : 'none';
+        });
+
+        // Inicializar el carrito al cargar la página
+        updateCart();
+    </script>
+</body>
+</html>

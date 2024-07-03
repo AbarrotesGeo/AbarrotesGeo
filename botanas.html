@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABARROTES GEO</title>
+  <style>
+    body {
+      background: linear-gradient(40deg, #000000, #f8f8f8);
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    
+    section#cabeza {
+      background: linear-gradient(40deg, #0407b8, #00fae5);
+      border-radius: 60px;
+      padding: 20px;
+      margin: 20px;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative; /* Añadido para establecer el contexto de posición */
+    }
+    
+    h1 {
+      font-size: 2.5em;
+      margin: 0;
+      animation: slideIn 1s ease-out;
+    }
+    
+    h2 {
+      font-size: 4em;
+      margin: 15px 0 0 0;
+      animation: fadeIn 2s ease-out;
+      color: #0e0055;
+      font-weight: bold;
+    }
+    
+    h4 {
+      font-size: 1.5em;
+      margin: 10px 0 0 0;
+      animation: fadeIn 2s ease-out;
+    }
+    
+    h3 {
+      margin: 15px 0 0 0;
+      font-size: 1.2em;
+      color: #0e0055;
+    }
+    
+    .offer1 {
+      background-color: #fffae5;
+      border: 1px dashed #ccc;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      animation: pulse 2s infinite;
+    }
+    
+    .offer1 h3 {
+      margin: 0;
+      font-size: 1.8em;
+      color: #e74c3c;
+    }
+    
+    .offer1 p {
+      margin: 10px 0 0 0;
+      font-size: 1.1em;
+      color: #0c429f;
+    }
+    
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
+    section#productos {
+      background: linear-gradient(40deg, #00000012, #f8f8f81d);
+      text-align: center;
+    }
+    
+    .offers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    
+    .offer {
+      width: auto;
+      height: auto;
+      padding: 20px;
+      margin: 20px;
+    }
+    
+    img {
+      width: 90px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+    }
+    
+    .offer img {
+      width: 100px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+    }
+    
+    .offer h3 {
+      margin-top: 0;
+    }
+    
+    .offer p {
+      margin-bottom: 10px;
+      font-size: 1.1em;
+      color: #0c429f;
+    }
+    
+    .offer span {
+      font-size: 18px;
+      font-weight: bold;
+      color: #000000;
+    }
+    
+    .offer button {
+      background: linear-gradient(40deg, rgb(37, 146, 255), rgb(225, 15, 15));
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    button {
+      background: linear-gradient(40deg, rgb(37, 146, 255), rgb(225, 15, 15));
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    .offer button:hover {
+      background: linear-gradient(40deg, rgba(1, 67, 248, 0.514), rgba(236, 104, 253, 0.514));
+    }
+    
+    .cart-container {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    
+    .cart {
+      max-height: 40px;
+      width: auto;
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="productos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<section id="cabeza">
+  <h1>ABARROTES GEO</h1>
+  <div class="cart-container">
+    <a href="carrito.html"><img src="imagenes/carrito.png" alt="Carrito" class="cart"></a>
+  </div>
+</section>
+<section id="productos">
+    <h2>BOTANAS</h2>
+    <div class="container">
+      <div class="header">
+        <h4>Elige las de tu gusto</h4>
+      </div>
+      <div class="offers">
+        <div class="offer">
+          <img src="imagenes/OIP.jpeg" alt="Doritos nachos">
+          <h3>Doritos nachos 56g</h3>
+          <p>$18.00 <span>sin descuento</span></p>
+          <button onclick="addToCart({id: 1, name: 'Doritos nachos', price: 18.00, image: 'imagenes/OIP.jpeg'})">Agregar al Carrito</button>
+        </div>
+        <div class="offer">
+          <img src="imagenes/R.jpeg" alt="Chips jalapeño">
+          <h3>Chips jalapeño 56g</h3>
+          <p>$17.00 <span>sin descuento</span></p>
+          <button onclick="addToCart({id: 2, name: 'Chips jalapeño', price: 17.00, image: 'imagenes/R.jpeg'})">Agregar al Carrito</button>
+        </div>
+        <div class="offer">
+          <img src="imagenes/tos.jpeg" alt="Tostachos">
+          <h3>Tostachos 56g</h3>
+          <p>$18.00 <span>sin descuento</span></p>
+          <button onclick="addToCart({id: 3, name: 'Tostachos', price: 18.00, image: 'imagenes/tos.jpeg'})">Agregar al Carrito</button>
+        </div>
+        <div class="offer">
+          <img src="imagenes/run.webp" alt="Runners">
+          <h3>Runners 45g</h3>
+          <p>$16.00 <span>sin descuento</span></p>
+          <button onclick="addToCart({id: 4, name: 'Runners', price: 16.00, image: 'imagenes/run.webp'})">Agregar al Carrito</button>
+        </div>
+        <div class="offer">
+          <img src="imagenes/kechidos.jpg" alt="K chidos">
+          <h3>K chidos 56g</h3>
+          <p>$11.00 <span>sin descuento</span></p>
+          <button onclick="addToCart({id: 5, name: 'K chidos', price: 11.00, image: 'imagenes/kechidos.jpg'})">Agregar al Carrito</button>
+        </div>
+        <div class="offer">
+          <img src="imagenes/chetos3.jpg" alt="Chetos chedar">
+          <h3>Chetos chedar 56g</h3>
+          <p>$16.00 <span>sin descuento</span></p>
+          <button onclick="addToCart({id: 6, name: 'Chetos chedar', price: 16.00, image: 'imagenes/chetos3.jpg'})">Agregar al Carrito</button>
+        </div>
+        <div class="offer">
+          <img src
+="imagenes/tostitos2.jpg" alt="Tostitos">
+<h3>Tostitos 56g</h3>
+<p>$18.00 <span>sin descuento</span></p>
+<button onclick="addToCart({id: 7, name: 'Tostitos', price: 18.00, image: 'imagenes/tostitos2.jpg'})">Agregar al Carrito</button>
+</div>
+<div class="offer">
+  <img src="imagenes/sc.jpeg" alt="Sabritas Clásicas">
+  <h3>Sabritas Clásicas 55g</h3>
+  <p>$15.00 <span>sin descuento</span></p>
+  <button onclick="addToCart({id: 8, name: 'Sabritas Clásicas', price: 15.00, image: 'imagenes/sc.jpeg'})">Agregar al Carrito</button>
+</div>
+<div class="offer">
+  <img src="imagenes/sa.jpeg" alt="Sabritas Adobadas">
+  <h3>Sabritas Adobadas 55gS</h3>
+  <p>$16.00 <span>sin descuento</span></p>
+  <button onclick="addToCart({id: 9, name: 'Sabritas Adobadas', price: 16.00, image: 'imagenes/sa.jpeg'})">Agregar al Carrito</button>
+</div>
+</div>
+<a href="index.html"><button>Regresar al menú</button></a>
+
+  </section>
+<div class="offer1">
+  <h3>¡OFERTA!</h3>
+  <p>En la compra de 2 productos iguales de cualquier tipo, tendrá 5 pesos de descuento.</p>
+</div>
+<script>
+  function addToCart(product) {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Producto agregado al carrito');
+    updateCart();
+  }
+
+  function updateCart() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    if (!cartItemsContainer) return; // No se necesita en esta página, pero en la página del carrito sí
+    cartItemsContainer.innerHTML = '';
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      total += item.price;
+      const cartItem = document.createElement('div');
+      cartItem.className = 'cart-item';
+      cartItem.innerHTML = `
+        <img src="${item.image}" alt="${item.name}">
+        <div class="item-info">
+          <span class="item-name">${item.name}</span>
+          <span class="item-price">$${item.price.toFixed(2)}</span>
+        </div>
+        <button class="remove-btn" onclick="removeFromCart(${index})">Eliminar</button>
+      `;
+      cartItemsContainer.appendChild(cartItem);
+    });
+
+    document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
+  }
+
+  updateCart();
+</script>
+</body>
+</html>

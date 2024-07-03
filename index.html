@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABARROTES GEO</title>
+  <style>
+    body {
+      background: linear-gradient(40deg, #000000, #f8f8f8);
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    section#cabeza {
+      background: linear-gradient(40deg, #0407b8, #00fae5); 
+      border-radius: 60px;
+      padding: 20px;
+      margin: 20px;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px; /* Ajusta según sea necesario */
+    }
+
+    .logo {
+      width: 120px;
+      height: 90px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin: 0;
+      animation: slideIn 1s ease-out;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      margin: 10px 0 0 0;
+      animation: fadeIn 2s ease-out;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ajusta el ancho mínimo y máximo */
+      grid-gap: 20px;
+      padding: 20px;
+      margin: 20px;
+      justify-items: center; /* Centra los items horizontalmente */
+    }
+
+    .item {
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .item a {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .item img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .item h3 {
+      margin: 15px 0 0 0;
+      font-size: 1.2em;
+      color: #0016a7;
+    }
+
+    .item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .item:hover img {
+      transform: scale(1.1);
+    }
+
+    .offer {
+      background: linear-gradient(40deg, #0407b8, #00fae5);
+      border: 1px dashed #fffefe;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      animation: pulse 2s infinite;
+    }
+
+    .offer h3 {
+      margin: 0;
+      font-size: 1.8em;
+      color: #e74c3c;
+    }
+
+    .offer p {
+      margin: 10px 0 0 0;
+      font-size: 1.1em;
+      color: #ffffff;
+    }
+
+    .cart-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cart {
+      max-height: 60px;
+      width: auto;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+  <link rel="stylesheet" type="text/css" href="menu.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body> 
+<section id="cabeza">
+  <div class="header-content">
+    <img src="imagenes/ceo logo.jpg" alt="geo" class="logo">
+    <div>
+      <h1>ABARROTES GEO</h1>
+      <h2>¡Donde hay buena calidad!</h2>
+    </div>
+    <div class="cart-container">
+      <a href="carrito.html"><img src="imagenes/carrito.png" alt="Carrito" class="cart"></a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="item">
+    <a href="lacteos.html">
+      <img src="imagenes/lacteos.jpg" alt="Lácteos">
+      <h3>Lácteos</h3>
+    </a>
+  </div>
+  <div class="item">
+    <a href="botanas.html">
+      <img src="imagenes/botanas.jpg" alt="Botanas">
+      <h3>Botanas</h3>
+    </a>
+  </div>
+  <div class="item">
+    <a href="galletas.html">
+      <img src="imagenes/galletas.jpg" alt="Galletas">
+      <h3>Galletas</h3>
+    </a>
+  </div>
+  <div class="item">
+    <a href="refrescos.html">
+      <img src="imagenes/refrescos.jpg" alt="Refrescos">
+      <h3>Refrescos</h3>
+    </a>
+  </div>
+  <div class="item">
+    <a href="frutas-verduras.html">
+      <img src="imagenes/frutas y verduras.jpg" alt="Frutas y Verduras">
+      <h3>Frutas y Verduras</h3>
+    </a>
+  </div>
+  <div class="item">
+    <a href="origen-animal.html">
+      <img src="imagenes/origen animal.jpg" alt="Origen Animal">
+      <h3>Origen Animal</h3>
+    </a>
+  </div>
+  <div class="item">
+    <a href="dulces.html">
+      <img src="imagenes/dulces.jpg" alt="Dulces">
+      <h3>Dulces</h3>
+    </a>
+  </div>
+</div>
+
+<div class="offer">
+  <a href="ofertas.html">
+    <h3>¡OFERTA!</h3>
+  </a>
+  <p>En la compra de 2 productos iguales de cualquier tipo, tendrá 5 pesos de descuento.</p>
+</div>
+
+</body>
+</html>

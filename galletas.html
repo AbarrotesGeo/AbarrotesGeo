@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ABARROTES GEO</title>
+  <link rel="stylesheet" type="text/css" href="productos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+        body {
+      background: linear-gradient(40deg, #000000, #f8f8f8);
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    
+    section#cabeza {
+      background: linear-gradient(40deg, #0407b8, #00fae5);
+      border-radius: 60px;
+      padding: 20px;
+      margin: 20px;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative; /* Añadido para establecer el contexto de posición */
+    }
+    
+    h1 {
+      font-size: 2.5em;
+      margin: 0;
+      animation: slideIn 1s ease-out;
+    }
+    
+    h2 {
+      font-size: 4em;
+      margin: 15px 0 0 0;
+      animation: fadeIn 2s ease-out;
+      color: #0e0055;
+      font-weight: bold;
+    }
+    
+    h4 {
+      font-size: 1.5em;
+      margin: 10px 0 0 0;
+      animation: fadeIn 2s ease-out;
+    }
+    
+    h3 {
+      margin: 15px 0 0 0;
+      font-size: 1.2em;
+      color: #0e0055;
+    }
+    
+    .offer1 {
+      background-color: #fffae5;
+      border: 1px dashed #ccc;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      animation: pulse 2s infinite;
+    }
+    
+    .offer1 h3 {
+      margin: 0;
+      font-size: 1.8em;
+      color: #e74c3c;
+    }
+    
+    .offer1 p {
+      margin: 10px 0 0 0;
+      font-size: 1.1em;
+      color: #0c429f;
+    }
+    
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    
+    section#productos {
+      background: linear-gradient(40deg, #00000012, #f8f8f81d);
+      text-align: center;
+    }
+    
+    .offers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    
+    .offer {
+      width: auto;
+      height: auto;
+      padding: 20px;
+      margin: 20px;
+    }
+    
+    img {
+      width: 90px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+    }
+    
+    .offer img {
+      width: 100px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+    }
+    
+    .offer h3 {
+      margin-top: 0;
+    }
+    
+    .offer p {
+      margin-bottom: 10px;
+      font-size: 1.1em;
+      color: #0c429f;
+    }
+    
+    .offer span {
+      font-size: 18px;
+      font-weight: bold;
+      color: #000000;
+    }
+    
+    .offer button {
+      background: linear-gradient(40deg, rgb(37, 146, 255), rgb(225, 15, 15));
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    button {
+      background: linear-gradient(40deg, rgb(37, 146, 255), rgb(225, 15, 15));
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    .offer button:hover {
+      background: linear-gradient(40deg, rgba(1, 67, 248, 0.514), rgba(236, 104, 253, 0.514));
+    }
+    
+    .cart-container {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    
+    .cart {
+      max-height: 40px;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+<section id="cabeza">
+  <h1>ABARROTES GEO</h1>
+  <div class="cart-container">
+    <a href="carrito.html"><img src="imagenes/carrito.png" alt="Carrito" class="cart"></a>
+  </div>
+</section>
+<section id="productos">
+    <h2>GALLETAS</h2>
+    <div class="container">
+      <div class="header">
+        <h4>Elija a su gusto</h4>
+      </div>
+      <div class="container_container">
+        <div class="offers">
+          <div class="offer">
+            <img src="imagenes/marias.jpg" alt="">
+            <h3>Marias Gamesa 98g</h3>
+            <p>$18.00 <span>sin descuento</span></p>
+            <button onclick="addToCart({id: 1, name: 'Marias Gamesa', price: 18.00, image: 'imagenes/marias.jpg'})">Agregar al Carrito</button>
+          </div>
+          <div class="offer">
+            <img src="imagenes/maravillas5.jpg" alt="">
+            <h3>Maravillas Gamesas 86g</h3>
+            <p>$18.00 <span>sin descuento</span></p>
+            <button onclick="addToCart({id: 2, name: 'Maravillas Gamesas', price: 18.00, image: 'imagenes/maravillas5.jpg'})">Agregar al Carrito</button>
+          </div>
+          <div class="offer">
+            <img src="imagenes/canelitasee.jpg" alt="">
+            <h3>Canelitas barcel 100g</h3>
+            <p>$23.00 <span>sin descuento</span></p>
+            <button onclick="addToCart({id: 3, name: 'Canelitas barcel', price: 23.00, image: 'imagenes/canelitasee.jpg'})">Agregar al Carrito</button>
+          </div>
+          <div class="offer">
+            <img src="imagenes/pancremas.jpg" alt="">
+            <h3>Pancremas Gamesa 100g</h3>
+            <p>$18.00 <span>sin descuento</span></p>
+            <button onclick="addToCart({id: 4, name: 'Pancremas Gamesa', price: 18.00, image: 'imagenes/pancremas.jpg'})">Agregar al Carrito</button>
+          </div>
+          <div class="offer">
+            <img src="imagenes/principe2.jpg" alt="">
+            <h3>Principe original Marinela 86g </h3>
+            <p>$18.00 <span>sin descuento</span></p>
+            <button onclick="addToCart({id: 5, name: 'Principe original Marinela', price: 18.00, image: 'imagenes/principe2.jpg'})">Agregar al Carrito</button>
+          </div>
+          <div class="offer">
+            <img src="imagenes/emperador.jpg" alt="">
+            <h3>Emperador de chocolate Marinela 86g</h3>
+            <p>$20.00 <span>sin descuento</span></p>
+            <button onclick="addToCart({id: 6, name: 'Emperador de chocolate Marinela', price: 20.00, image: 'imagenes/emperador.jpg'})">Agregar al Carrito</button>
+          </div>
+          <div class="offer">
+            <img src="imagenes/chokis.jpg" alt="">
+            <h3>Chokkis Marinela86g</h3>
+            <p>$18.00 <span>sin descuento</span></p>
+    <button onclick="addToCart({id: 7, name: 'Chokkis Marinela', price: 18.00, image: 'imagenes/chokis.jpg'})">Agregar al Carrito</button>
+
+</div>
+</div>
+</div>
+</div>
+<a href="index.html"><button>Regresar al Menú</button></a>
+
+  </section>
+<div class="offer1">
+  <h3>¡OFERTA!</h3>
+  <p>En la compra de 2 productos iguales de cualquier tipo, tendrá 5 pesos de descuento.</p>
+</div>
+<script>
+  function addToCart(product) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert('Producto agregado al carrito');
+  }
+</script>
+</body>
+</html>
